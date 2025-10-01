@@ -1,0 +1,5 @@
+
+#init.
+CREATE DATABASE mydb WITH OWNER = user;
+CREATE DATABASE file_serv WITH OWNER = user;
+CREATE DATABASE tech_serv WITH OWNER = user;

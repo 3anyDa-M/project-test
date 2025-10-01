@@ -1,0 +1,13 @@
+#application.yml
+spring:
+  jpa:
+    database: postgresql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/file_serv
+    username: user
+    password: 123
+
+
+
+
+

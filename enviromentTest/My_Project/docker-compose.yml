@@ -1,18 +1,18 @@
 
+
+
+    # docker-compose
 services:
+  postgres:
+    build: .
+    container_name: my_pg
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
-
-    # postgresql
-    my_project:
-      image: postgres:16
-      container_name: my_project
-      environment:
-        POSTGRES_USER: user
-        POSTGRES_PASSWORD: 123
-        POSTGRES_DB: mydb
-      ports:
-        - "5432:5432"
-      volumes:
-            - postgres_data:/var/lib/postgresql/data
 volumes:
   postgres_data:
