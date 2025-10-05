@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech-serv
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tech-serv
+  template:
+    metadata:
+      labels:
+        app: tech-serv
+    spec:
+      containers:
+        - name: tech-serv
+          image: your-dockerhub-username/tech-serv:latest  # тут укажи свой Docker-образ
+          ports:
+            - containerPort: 8080

@@ -1,12 +1,19 @@
 #application.yml
 spring:
+  kafka:
+    topic:
+      name: tech-topic
   jpa:
     database: postgresql
+    hibernate:
+      ddl-auto: none
   datasource:
-    url: jdbc:postgresql://localhost:5432/file_serv
-    username: user
+    url: jdbc:postgresql://localhost:5432/tech_serv
+    username: postgres
     password: 123
-
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
 
 
 
