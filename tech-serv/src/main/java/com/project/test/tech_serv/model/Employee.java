@@ -4,6 +4,10 @@ package com.project.test.tech_serv.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+
+import java.util.HashSet;
+import java.util.Set;
+
 @Getter
 @Setter
 @Builder
@@ -22,8 +26,9 @@ public class Employee implements java.io.Serializable {
     @Column(length = 100, nullable = false)
     private String firstName;
 
-    @Column(length = 100,nullable = false)
-    private String job_title;
+    @Column(length = 100, nullable = false)
+    private String job;
 
-
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
+    private Set<Contact> contact = new HashSet<>();
 }
