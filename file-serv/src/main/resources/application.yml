@@ -1,9 +1,14 @@
 #application.yml
 spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+  liquibase:
+    enabled: false
   jpa:
     database: postgresql
   datasource:
     url: jdbc:postgresql://localhost:5432/file_serv
     username: postgres
     password: 123
-
+server:
+  port: 8082
