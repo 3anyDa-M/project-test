@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -26,6 +28,7 @@ public class EmployeeBusinessServiceImpl implements EmployeBusinessService {
     @Value("${spring.kafka.topic.name}")
     private  String topicName;
 
+
     @Override
     public GetFullDataEmployeeResponse getFullDataEmployeeResponse(String firstName, boolean kafkaSend) {
         EmployeeDTO employeeDTO = employeeService.findByFirstName(firstName);
@@ -39,10 +42,10 @@ public class EmployeeBusinessServiceImpl implements EmployeBusinessService {
         GetFullDataEmployeeResponse getFullDataEmployeeResponse = new GetFullDataEmployeeResponse(employeeDTO, pasportDTO);
         if (!kafkaSend) {
             return getFullDataEmployeeResponse;
-        }
-        else {
-            kafkaTemplate.send(topicName, getFullDataEmployeeResponse);
-                log.debug("Сообщение отправилось в {}", topicName);
+        } else {
+            String idenpotensyKey = UUID.randomUUID().toString();
+            kafkaTemplate.send(topicName, idenpotensyKey, getFullDataEmployeeResponse);
+                log.debug("Сообщение отправилось в {} с ключем {}", topicName, idenpotensyKey);
                 return GetFullDataEmployeeResponse.EMPTY;
         }
     }
