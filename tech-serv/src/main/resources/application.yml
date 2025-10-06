@@ -1,6 +1,9 @@
 #application.yml
+server:
+  port: 8081
 spring:
   kafka:
+    bootstrap-servers: localhost:9092
     topic:
       name: tech-topic
   jpa:

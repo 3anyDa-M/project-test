@@ -1,6 +1,6 @@
 package com.project.test.fileserv.model.Dto.tech_serv;
 
-import com.project.test.tech_serv.model.enums.ContatcType;
+import com.project.test.fileserv.model.enums.ContatcType;
 import lombok.Builder;
 
 @Builder
