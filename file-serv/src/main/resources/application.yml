@@ -6,6 +6,9 @@ spring:
     enabled: false
   jpa:
     database: postgresql
+    hibernate:
+      ddl-auto: update
+    show-sql: true
   datasource:
     url: jdbc:postgresql://localhost:5432/file_serv
     username: postgres
