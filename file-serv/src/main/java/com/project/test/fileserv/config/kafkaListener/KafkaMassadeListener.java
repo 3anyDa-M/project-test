@@ -29,6 +29,6 @@ public class KafkaMassadeListener {
         processedKeyRepository.save(new ProcessedKeyEntity(idenpotensyKey));
         log.info("Ключ {} записан в БД", idenpotensyKey);
 
-        /// Дальнейшая логика после получения
+        ///  Дальнейшая логика после получения
     }
 }
