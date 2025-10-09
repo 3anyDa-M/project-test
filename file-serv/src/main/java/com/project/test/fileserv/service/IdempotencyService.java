@@ -1,4 +1,4 @@
-package com.project.test.fileserv.service.Impl;
+package com.project.test.fileserv.service;
 
 public interface IdempotencyService {
     public boolean isProcessed(String idenpotensyKey);
