@@ -11,13 +11,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-
 import java.util.UUID;
+import java.util.List;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-
 
 
 public class EmployeeBusinessServiceImpl implements EmployeBusinessService {
@@ -31,8 +30,8 @@ public class EmployeeBusinessServiceImpl implements EmployeBusinessService {
 
     @Override
     public GetFullDataEmployeeResponse getFullDataEmployeeResponse(String firstName, boolean kafkaSend) {
-        EmployeeDTO employeeDTO = employeeService.findByFirstName(firstName);
-        PasportDTO pasportDTO = pasportService.findByFirstName(firstName);
+        List<EmployeeDTO> employeeDTO = employeeService.findByFirstName(firstName);
+        List<PasportDTO> pasportDTO = pasportService.findByFirstName(firstName);
 
         if (employeeDTO==null || pasportDTO==null) {
             log.warn("Данные не найдены {}",firstName);

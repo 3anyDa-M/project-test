@@ -6,13 +6,15 @@ import com.project.test.tech_serv.service.PasportService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class PasportServiceImpl implements PasportService {
     private final PasportRepository pasportRepository;
 
     @Override
-    public PasportDTO findByFirstName(String firstName) {
+    public List<PasportDTO> findByFirstName(String firstName) {
         return pasportRepository.findByFirstName(firstName);
     }
 }
