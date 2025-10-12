@@ -31,4 +31,7 @@ public class Employee implements java.io.Serializable {
 
     @OneToMany(mappedBy = "employee",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private Set<Contact> contact = new HashSet<>();
+
+//    @OneToOne(mappedBy ="pasport",fetch = FetchType.LAZY)
+//    private Pasport pasport;
 }

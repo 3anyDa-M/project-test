@@ -1,12 +1,12 @@
 #application.yml
 server:
   port: 8081
+
 spring:
   data:
     redis:
       host: localhost
       port: 6379
-      time-to-live: 600000
   cache:
     type: redis
 
@@ -14,25 +14,30 @@ spring:
     bootstrap-servers: localhost:9092
     topic:
       name: tech-topic
+
   jpa:
     database: postgresql
     hibernate:
       ddl-auto: none
+
   datasource:
     url: jdbc:postgresql://localhost:5432/tech_serv
     username: postgres
     password: 123
+
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/db.changelog-master.xml
+
 management:
   endpoints:
     web:
       exposure:
-        include: health,info,prometheus
+        include: health,info,prometheus,caches,beans
   endpoint:
     prometheus:
       enabled: true
+
   metrics:
     tags:
       application: tech-serv
