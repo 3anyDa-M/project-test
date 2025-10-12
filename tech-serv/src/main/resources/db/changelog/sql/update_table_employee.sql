@@ -1,1 +1,0 @@
-ALTER TABLE employee RENAME COLUMN job_title TO job;

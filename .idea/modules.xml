@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/JMeter/JMeter.iml" filepath="$PROJECT_DIR$/JMeter/JMeter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjectTest.iml" filepath="$PROJECT_DIR$/.idea/ProjectTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/file-serv/file-serv.iml" filepath="$PROJECT_DIR$/file-serv/file-serv.iml" />
     </modules>

@@ -5,7 +5,9 @@ import com.project.test.tech_serv.model.Pasport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface PasportRepository extends JpaRepository<Pasport,String> {
-    PasportDTO findByFirstName(String firstName);
+   List<PasportDTO> findByFirstName(String firstName);
 }
