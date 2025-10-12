@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JMeter/JMeter.iml" filepath="$PROJECT_DIR$/JMeter/JMeter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ProjectTest.iml" filepath="$PROJECT_DIR$/.idea/ProjectTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/file-serv/file-serv.iml" filepath="$PROJECT_DIR$/file-serv/file-serv.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tech-serv/tech-serv.iml" filepath="$PROJECT_DIR$/tech-serv/tech-serv.iml" />
     </modules>
   </component>
 </project>

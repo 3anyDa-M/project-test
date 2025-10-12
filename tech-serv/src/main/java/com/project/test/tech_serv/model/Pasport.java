@@ -14,14 +14,22 @@ import lombok.*;
 public class Pasport {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long  id;
+    private long id;
 
-    @Column(length = 100,nullable = false)
+    @Column(length = 100, nullable = false)
     private String firstName;
-    @Column(length = 100,nullable = false)
+
+    @Column(length = 100, nullable = false)
     private String lastName;
-    @Column(name = "number",nullable = false)
+
+    @Column(name = "number", nullable = false)
     private String pasportNum;
+
     @Column(nullable = false)
     private String address;
+
 }
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "employee_id", nullable = false)
+//    private Employee employee;
+//}
