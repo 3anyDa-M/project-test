@@ -26,7 +26,7 @@ spring:
     password: 123
 
   liquibase:
-    enabled: true
+    enabled: false
     change-log: classpath:/db/changelog/db.changelog-master.xml
 
 management:

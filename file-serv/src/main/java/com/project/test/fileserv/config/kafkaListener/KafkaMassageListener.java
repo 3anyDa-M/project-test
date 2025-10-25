@@ -1,6 +1,5 @@
 package com.project.test.fileserv.config.kafkaListener;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.project.test.fileserv.model.Dto.tech_serv.GetFullDataEmployeeResponse;
 import com.project.test.fileserv.model.ProcessedKeyEntity;
@@ -14,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class KafkaMassadeListener {
+public class KafkaMassageListener {
     private final ObjectMapper objectMapper;
     private final ProcessedKeyRepository processedKeyRepository;
     @KafkaListener(topics = "tech-topic", groupId = "group1")

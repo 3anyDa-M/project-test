@@ -1,0 +1,1 @@
+INSERT INTO employee (first_name, job) VALUES ('Mckinley Hand','Chief Supervisor')

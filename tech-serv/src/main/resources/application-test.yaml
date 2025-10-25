@@ -1,0 +1,5 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # создаёт таблицы перед тестами и удаляет после
+    show-sql: true
