@@ -28,8 +28,8 @@ public class Pasport {
     @Column(nullable = false)
     private String address;
 
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "employee_id", nullable = false)
+    private Employee employee;
 }
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "employee_id", nullable = false)
-//    private Employee employee;
-//}

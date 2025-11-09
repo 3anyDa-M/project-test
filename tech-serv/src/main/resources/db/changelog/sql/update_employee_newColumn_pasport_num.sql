@@ -1,0 +1,2 @@
+ALTER TABLE employee
+ADD COLUMN pasport_num VARCHAR(100);

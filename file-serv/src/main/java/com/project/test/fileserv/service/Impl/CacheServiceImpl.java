@@ -12,6 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class CacheServiceImpl implements CacheService {
 
     private final RedisTemplate<String, String> redisTemplate;
+
     @Override
     public String get(String key) {
         return redisTemplate.opsForValue().get(key);
@@ -32,4 +33,5 @@ public class CacheServiceImpl implements CacheService {
         redisTemplate.delete(key);
 
     }
+
 }

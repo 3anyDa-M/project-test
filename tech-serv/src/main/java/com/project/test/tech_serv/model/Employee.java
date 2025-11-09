@@ -27,11 +27,17 @@ public class Employee implements java.io.Serializable {
     private String firstName;
 
     @Column(length = 100, nullable = false)
+    private String lastName;
+
+    @Column(length = 100, nullable = false)
     private String job;
+
+    @Column(name = "pasport_num", length = 100)
+    private String pasportNum;
 
     @OneToMany(mappedBy = "employee",cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private Set<Contact> contact = new HashSet<>();
 
-//    @OneToOne(mappedBy ="pasport",fetch = FetchType.LAZY)
-//    private Pasport pasport;
+    @OneToOne(mappedBy ="employee",fetch = FetchType.LAZY)
+    private Pasport pasport;
 }

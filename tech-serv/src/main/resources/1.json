@@ -1,0 +1,36 @@
+{"@class":"com.project.test.tech_serv.DTO.contract.GetFullDataEmployeeResponse",
+
+  "employeeDTO":["java.util.ArrayList",[
+    {"@class":"com.project.test.tech_serv.DTO.entity.EmployeeDTO",
+      "id":1,
+      "firstName":"Desiree",
+      "job":"Legacy Construction Designer"},
+
+    {"@class":"com.project.test.tech_serv.DTO.entity.EmployeeDTO",
+      "id":5951,
+      "firstName":"Desiree",
+      "job":"Direct Government Consultant"},
+
+    {"@class":"com.project.test.tech_serv.DTO.entity.EmployeeDTO",
+      "id":9392,
+      "firstName":"Desiree",
+      "job":"Direct Consulting Coordinator"}]],
+
+  "pasportDTO":["java.util.ArrayList",[
+    {"@class":"com.project.test.tech_serv.DTO.entity.PasportDTO",
+      "firstName":"Desiree",
+      "lastName":"O'Hara",
+      "pasportNum":"0346941549",
+      "address":"Apt. 991 3942 Kristopher Rapid, Koeppberg, IN 85692"},
+
+    {"@class":"com.project.test.tech_serv.DTO.entity.PasportDTO",
+      "firstName":"Desiree",
+      "lastName":"Ernser",
+      "pasportNum":"8148619461",
+      "address":"199 Wiza Fields, Barrettbury, NE 76633"},
+
+    {"@class":"com.project.test.tech_serv.DTO.entity.PasportDTO",
+      "firstName":"Desiree",
+      "lastName":"Stokes",
+      "pasportNum":"3700250061",
+      "address":"Apt. 316 122 Dung Turnpike, Steuberview, HI 29599"}]]}

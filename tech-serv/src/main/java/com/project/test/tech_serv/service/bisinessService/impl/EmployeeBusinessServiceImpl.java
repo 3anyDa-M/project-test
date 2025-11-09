@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.Message;
+import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -24,7 +27,6 @@ public class EmployeeBusinessServiceImpl implements EmployeBusinessService {
     private String topicName;
 
 
-
     @Override
     public GetFullDataEmployeeResponse getFullDataEmployeeResponse(String firstName, boolean kafkaSend) {
         GetFullDataEmployeeResponse response = employeeCacheService.getEmployeeData(firstName);
@@ -38,7 +40,13 @@ public class EmployeeBusinessServiceImpl implements EmployeBusinessService {
 
     public void kafkaSend(GetFullDataEmployeeResponse response) {
         String key = UUID.randomUUID().toString();
-        kafkaTemplate.send(topicName, key, response);
+        Message<GetFullDataEmployeeResponse> massage = MessageBuilder.withPayload(response)
+                .setHeader("kafka_recordKey", key)
+                .setHeader("type", GetFullDataEmployeeResponse.class.getName())
+                .setHeader(KafkaHeaders.TOPIC, topicName)
+                .build();
+
+        kafkaTemplate.send(massage);
         log.debug("Сообщение отправлено в Kafka с ключом {}", key);
     }
 }

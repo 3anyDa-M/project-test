@@ -27,10 +27,14 @@ public class EmployeeCacheServiceImpl implements EmployeeCacheService {
         List<EmployeeDTO> employeeDTO = employeeService.findByFirstName(firstName);
         List<PasportDTO> pasportDTO = pasportService.findByFirstName(firstName);
 
+
+//        GetFullDataEmployeeResponse response =employeeService.getFullfindByFirstName(firstName);
+
         if (employeeDTO == null || pasportDTO == null) {
             return GetFullDataEmployeeResponse.EMPTY;
         }
         return new GetFullDataEmployeeResponse(employeeDTO, pasportDTO);
+//        return response;
     }
 }
 
