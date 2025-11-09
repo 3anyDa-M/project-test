@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProcessedKeyRepository extends JpaRepository <ProcessedKeyEntity, String>{
-    public void save(String idenpotensyKey);
 }

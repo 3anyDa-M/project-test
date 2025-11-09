@@ -1,6 +1,5 @@
 package com.project.test.tech_serv.config.dataInitializer;
 
-import net.datafaker.Faker;
 import com.project.test.tech_serv.model.Contact;
 import com.project.test.tech_serv.model.Employee;
 import com.project.test.tech_serv.model.Pasport;
@@ -10,12 +9,11 @@ import com.project.test.tech_serv.repository.EmployeeRepository;
 import com.project.test.tech_serv.repository.PasportRepository;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import net.datafaker.Faker;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Component
 @RequiredArgsConstructor
@@ -27,14 +25,11 @@ public class DataInitializer {
     private final Faker faker = new Faker();
     private final Random random = new Random();
 
-    private static final int EMPLOYEE_COUNT = 1000; // 👉 количество записей
+    private static final int EMPLOYEE_COUNT = 10000; // 👉 количество записей
 
     @PostConstruct
     @Transactional
-
-
     public void init() {
-        // Проверяем флаг окружения
         String initFlag = System.getenv("INIT_FAKE_DATA");
         if (initFlag == null || !initFlag.equalsIgnoreCase("true")) {
             System.out.println("⚠️ Генерация отключена — установи INIT_FAKE_DATA=true, чтобы включить.");
@@ -50,18 +45,28 @@ public class DataInitializer {
         List<Pasport> pasports = new ArrayList<>();
 
         for (int i = 0; i < EMPLOYEE_COUNT; i++) {
+            String firstName = faker.name().firstName();
+            String lastName = faker.name().lastName();
+            String passportNum = faker.number().digits(10);
+
             Employee employee = Employee.builder()
-                    .firstName(faker.name().fullName())
+                    .firstName(firstName)
+                    .lastName(lastName)
                     .job(faker.job().title())
+                    .pasportNum(passportNum)
                     .build();
             employees.add(employee);
-        }
 
-        employeeRepository.saveAll(employees);
+            Pasport pasport = Pasport.builder()
+                    .firstName(firstName)
+                    .lastName(lastName)
+                    .pasportNum(passportNum)
+                    .address(faker.address().fullAddress())
+                    .employee(employee)
+                    .build();
+            pasports.add(pasport);
 
-        for (Employee employee : employees) {
             int contactsCount = 1 + random.nextInt(3);
-
             for (int j = 0; j < contactsCount; j++) {
                 Contact contact = Contact.builder()
                         .contatcType(random.nextBoolean() ? ContatcType.EMAIL : ContatcType.PHONE)
@@ -72,22 +77,13 @@ public class DataInitializer {
                         .build();
                 contacts.add(contact);
             }
-
-            Pasport pasport = Pasport.builder()
-                    .firstName(employee.getFirstName().split(" ")[0])
-                    .lastName(employee.getFirstName().split(" ").length > 1
-                            ? employee.getFirstName().split(" ")[1]
-                            : "Unknown")
-                    .pasportNum(faker.number().digits(10))
-                    .address(faker.address().fullAddress())
-                    .build();
-            pasports.add(pasport);
         }
 
-        contactRepository.saveAll(contacts);
+        employeeRepository.saveAll(employees);
         pasportRepository.saveAll(pasports);
+        contactRepository.saveAll(contacts);
 
-        System.out.println("✅ Сгенерировано " + EMPLOYEE_COUNT + " сотрудников, " +
+        System.out.println("✅ Сгенерировано " + employees.size() + " сотрудников, " +
                            contacts.size() + " контактов и " + pasports.size() + " паспортов.");
     }
 }

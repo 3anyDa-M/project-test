@@ -1,7 +1,7 @@
-package com.project.test.fileserv.model.Dto.contract;
+package com.project.test.fileserv.model.Dto.tech_serv.contract;
 
-import com.project.test.tech_serv.DTO.entity.EmployeeDTO;
-import com.project.test.tech_serv.DTO.entity.PasportDTO;
+import com.project.test.fileserv.model.Dto.tech_serv.EmployeeDTO;
+import com.project.test.fileserv.model.Dto.tech_serv.PasportDTO;
 import lombok.Builder;
 
 @Builder

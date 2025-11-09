@@ -18,7 +18,10 @@ spring:
       host: localhost
       port: 6379
       timeout: 2000ms
-
+  minio:
+    url: http://localhost:9000
+    access-key: 12345678
+    secret-key: 87654321
 server:
   port: 8082
 

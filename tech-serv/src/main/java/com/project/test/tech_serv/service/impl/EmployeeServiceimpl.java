@@ -1,5 +1,6 @@
 package com.project.test.tech_serv.service.impl;
 
+import com.project.test.tech_serv.DTO.contract.GetFullDataEmployeeResponse;
 import com.project.test.tech_serv.DTO.entity.EmployeeDTO;
 import com.project.test.tech_serv.model.Employee;
 import com.project.test.tech_serv.repository.EmployeeRepository;
@@ -23,7 +24,14 @@ public class EmployeeServiceimpl implements EmployeeService {
     @Override
     @Cacheable(value = "employees",key = "#id")
     public Employee getEmployeeById(long id) {
-        System.out.println("🧩 Запрос к БД для id=" + id);
+        System.out.println(" Запрос к БД для id=" + id);
         return employeeRepository.findById(id);
     }
+
+    @Override
+    public GetFullDataEmployeeResponse getFullfindByFirstName(String firstName) {
+        return employeeRepository.getFullfindByFirstName(firstName);
+    }
+
+
 }
