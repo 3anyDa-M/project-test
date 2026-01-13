@@ -6,7 +6,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.io.InputStream;
+import java.io.*;
 
 @Slf4j
 @Service
@@ -18,28 +18,38 @@ public class MinIoService {
 
     ///  Проверка существования бакета и создание в случае его отсутствия
     @SneakyThrows
-    public void createBucketIfNotExist(String bucketName){
+    public void createBucketIfNotExist(String bucketName)  {
         boolean exists = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
+        log.debug("Такой бакет существует");
+        if (!exists) {
+            minioClient.makeBucket(MakeBucketArgs.builder().bucket(bucketName).build());
+            log.debug("Создание Бакета в MinIo ");
+        }
+
     }
+
 
     /// загрузка файла в бакет
     @SneakyThrows
-    public void uploadFile(String bucketName, String fileName //String filePath
-    ){
-        minioClient.putObject(
-                PutObjectArgs
-                        .builder()
-                        .bucket(bucketName)
-                        .object(fileName)
-                        /// filename(filePath)
-                        .build()
-        );
+    public void uploadStream(String bucketName, String objectName, ByteArrayOutputStream stream) {
+        byte[] bytes = stream.toByteArray();
+        try (InputStream is = new ByteArrayInputStream(bytes)) {
+            minioClient.putObject(
+                    PutObjectArgs.builder()
+                            .bucket(bucketName)
+                            .object(objectName)
+                            .stream(is, bytes.length, -1)
+                            .build()
+            );
+            log.debug("Загрузка файлов в Minio");
+        }
     }
+
 
 
     /// Скачивание объекта из MinIo
     @SneakyThrows
-    public InputStream downloadFile(String bucketName, String fileName){
+    public InputStream downloadFile(String bucketName, String fileName) {
         return minioClient.getObject(
                 GetObjectArgs
                         .builder()
@@ -52,11 +62,11 @@ public class MinIoService {
 
     /// Удаление объекта из MinIO
     @SneakyThrows
-    public void deleteObject (String bucketName, String fileName){
+    public void deleteObject(String bucketName, String fileName) {
         minioClient.removeObject(RemoveObjectArgs
                 .builder()
-                    .bucket(bucketName)
-                    .object(fileName)
+                .bucket(bucketName)
+                .object(fileName)
                 .build());
     }
 

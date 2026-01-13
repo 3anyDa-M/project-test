@@ -1,10 +1,10 @@
-package com.project.test.tech_serv.service.impl;
+package com.project.test.tech_serv.service.implementService;
 
 import com.project.test.tech_serv.DTO.contract.GetFullDataEmployeeResponse;
 import com.project.test.tech_serv.DTO.entity.EmployeeDTO;
 import com.project.test.tech_serv.model.Employee;
 import com.project.test.tech_serv.repository.EmployeeRepository;
-import com.project.test.tech_serv.service.EmployeeService;
+import com.project.test.tech_serv.service.interfaceService.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
