@@ -1,7 +1,7 @@
 package com.project.test.tech_serv.service.bisinessService.impl;
 
 import com.project.test.tech_serv.DTO.contract.GetFullDataEmployeeResponse;
-import com.project.test.tech_serv.service.EmployeeCacheService;
+import com.project.test.tech_serv.service.interfaceService.EmployeeCacheService;
 import com.project.test.tech_serv.service.bisinessService.EmployeBusinessService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,14 +38,13 @@ public class EmployeeBusinessServiceImpl implements EmployeBusinessService {
         return response;
     }
 
-    public void kafkaSend(GetFullDataEmployeeResponse response) {
+    private void kafkaSend(GetFullDataEmployeeResponse response) {
         String key = UUID.randomUUID().toString();
         Message<GetFullDataEmployeeResponse> massage = MessageBuilder.withPayload(response)
-                .setHeader("kafka_recordKey", key)
-                .setHeader("type", GetFullDataEmployeeResponse.class.getName())
+                .setHeader(KafkaHeaders.KEY, key)
                 .setHeader(KafkaHeaders.TOPIC, topicName)
+                .setHeader("type", GetFullDataEmployeeResponse.class.getName())
                 .build();
-
         kafkaTemplate.send(massage);
         log.debug("Сообщение отправлено в Kafka с ключом {}", key);
     }

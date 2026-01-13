@@ -1,11 +1,11 @@
-package com.project.test.tech_serv.service.impl;
+package com.project.test.tech_serv.service.implementService;
 
 import com.project.test.tech_serv.DTO.contract.GetFullDataEmployeeResponse;
 import com.project.test.tech_serv.DTO.entity.EmployeeDTO;
 import com.project.test.tech_serv.DTO.entity.PasportDTO;
-import com.project.test.tech_serv.service.EmployeeCacheService;
-import com.project.test.tech_serv.service.EmployeeService;
-import com.project.test.tech_serv.service.PasportService;
+import com.project.test.tech_serv.service.interfaceService.EmployeeCacheService;
+import com.project.test.tech_serv.service.interfaceService.EmployeeService;
+import com.project.test.tech_serv.service.interfaceService.PasportService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.cache.annotation.Cacheable;

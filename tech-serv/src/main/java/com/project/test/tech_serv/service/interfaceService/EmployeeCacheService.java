@@ -1,4 +1,4 @@
-package com.project.test.tech_serv.service;
+package com.project.test.tech_serv.service.interfaceService;
 
 import com.project.test.tech_serv.DTO.contract.GetFullDataEmployeeResponse;
 import org.springframework.stereotype.Service;

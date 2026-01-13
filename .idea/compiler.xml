@@ -23,10 +23,14 @@
         <module name="tech-serv" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="report-serv" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="file-serv" options="-parameters" />
+      <module name="report-serv" options="-parameters" />
       <module name="tech-serv" options="-parameters" />
     </option>
   </component>
